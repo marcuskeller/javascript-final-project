@@ -25,12 +25,12 @@ index.html          página inicial
 style.css           estilo compartilhado do site
 script.js           interatividade compartilhada (abrir/fechar atividade, trocar aba, copiar código, executar)
 assets/             logos das tecnologias + CSS base compartilhado das atividades
-atividades/
+activities/
   {estrutura}/
     index.html       página da estrutura (teoria + 3 atividades)
-    atividade-1/      atividade fácil (index.html, style.css, javascript.js)
-    atividade-2/      atividade média
-    atividade-3/      atividade difícil
+    activity-1/       atividade fácil (index.html, javascript.js)
+    activity-2/       atividade média
+    activity-3/       atividade difícil
 ```
 
 ## Tecnologias

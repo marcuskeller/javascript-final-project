@@ -1,0 +1,39 @@
+<!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e diga se o saldo está positivo, negativo (em dívida) ou zerado -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/form-basic.css"
+    />
+    <script src="javascript.js"></script>
+    <title>Atividade 1</title>
+  </head>
+
+  <body>
+    <section>
+      <h2>Saldo Bancário</h2>
+      <font face="Arial">
+        <form
+          name="frmsaldose"
+          action="#"
+          method="get"
+          onsubmit="return validaFormulario();"
+        >
+          <fieldset class="form-card">
+            <legend>Entrada de dados</legend>
+            <br />
+            <label for="saldo">Saldo da conta :</label>
+            <input type="text" name="txtsaldo" id="saldo" /><br />
+            <br />
+            <button type="reset">Limpar</button
+            ><button type="submit">Enviar</button>
+          </fieldset>
+        </form>
+      </font>
+    </section>
+  </body>
+</html>
