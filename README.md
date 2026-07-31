@@ -34,4 +34,4 @@ activities/
 
 ## Tecnologias
 
-HTML, CSS e JavaScript puro (sem frameworks). Font Awesome pros ícones, guardado localmente em `assets/vendor/`, sem depender de CDN.
+HTML, CSS e JavaScript puro (sem frameworks e sem dependências externas).
