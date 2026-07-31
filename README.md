@@ -23,7 +23,6 @@ Só abrir o `index.html` no navegador. Não precisa de servidor nem instalar nad
 ```
 index.html          página inicial
 style.css           estilo compartilhado do site
-script.js           interatividade compartilhada (copiar código)
 assets/             logos das tecnologias + CSS base compartilhado dos formulários
 activities/
   {estrutura}/
