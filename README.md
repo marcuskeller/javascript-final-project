@@ -34,4 +34,4 @@ activities/
 
 ## Tecnologias
 
-HTML, CSS e JavaScript puro (sem frameworks). Prism.js pra realce de sintaxe do código e Font Awesome pros ícones — ambos guardados localmente em `assets/vendor/`, sem depender de CDN.
+HTML, CSS e JavaScript puro (sem frameworks). Font Awesome pros ícones, guardado localmente em `assets/vendor/`, sem depender de CDN.
