@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 2 - Estrutura Faça...Enquanto</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,24 +24,26 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> Do...While</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
 
     <main id="conteudo">
       <div class="activity-content">
-        <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
+        <h2>Atividade 2 <span class="level-badge level-medium">Médio</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia um valor já guardado, o valor economizado
+          por mês e uma meta de economia e, usando o laço FAÇA...ENQUANTO
+          (do...while), calcule quantos meses são necessários até atingir a
+          meta.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Meta de Economia</h2>
           <form
-            name="frmsaldose"
+            name="frmmetafaca"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +51,16 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="guardado">Valor já guardado :</label>
+                <input type="text" name="txtguardado" id="guardado" />
+              </div>
+              <div class="form-group">
+                <label for="economia">Economia mensal :</label>
+                <input type="text" name="txteconomia" id="economia" />
+              </div>
+              <div class="form-group">
+                <label for="meta">Meta de economia :</label>
+                <input type="text" name="txtmeta" id="meta" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +79,9 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia um valor já guardado, o valor economizado --&gt;
+&lt;!-- por mês e uma meta de economia e, usando o laço FAÇA...ENQUANTO --&gt;
+&lt;!-- (do...while), calcule quantos meses são necessários até atingir a meta --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +93,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 2 - Estrutura Faça...Enquanto&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Meta de Economia&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmmetafaca"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +108,16 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="guardado"&gt;Valor já guardado :&lt;/label&gt;
+            &lt;input type="text" name="txtguardado" id="guardado" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="economia"&gt;Economia mensal :&lt;/label&gt;
+            &lt;input type="text" name="txteconomia" id="economia" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="meta"&gt;Meta de economia :&lt;/label&gt;
+            &lt;input type="text" name="txtmeta" id="meta" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +137,43 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let guardado = document.getElementById("guardado").value;
+  let economia = document.getElementById("economia").value;
+  let meta = document.getElementById("meta").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (guardado === "") {
+    alert("Preencha o campo valor guardado!");
+    document.getElementById("guardado").focus();
+    return false;
+  }
+  if (economia === "") {
+    alert("Preencha o campo economia mensal!");
+    document.getElementById("economia").focus();
+    return false;
+  }
+  if (meta === "") {
+    alert("Preencha o campo meta!");
+    document.getElementById("meta").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let economiaNumero = parseFloat(economia);
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  if (economiaNumero &lt;= 0) {
+    alert("A economia mensal deve ser maior que zero!");
+    return false;
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  let total = parseFloat(guardado);
+  let metaNumero = parseFloat(meta);
+  let meses = 0;
+
+  do {
+    total += economiaNumero;
+    meses++;
+  } while (total &lt; metaNumero);
+
+  alert(`A meta será atingida em ${meses} meses`);
   return true;
 }</code></pre>
           </div>

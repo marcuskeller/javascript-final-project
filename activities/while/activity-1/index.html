@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 1 - Estrutura Enquanto</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,7 +24,7 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> While</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
@@ -33,15 +33,17 @@
       <div class="activity-content">
         <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia a capacidade de uma caixa d'água (em
+          litros) e a vazão de uma torneira (em litros por minuto) e, usando o
+          laço ENQUANTO (while), calcule quantos minutos são necessários para
+          enchê-la.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Caixa D'Água</h2>
           <form
-            name="frmsaldose"
+            name="frmcaixaenquanto"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +51,12 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="capacidade">Capacidade da caixa (litros) :</label>
+                <input type="text" name="txtcapacidade" id="capacidade" />
+              </div>
+              <div class="form-group">
+                <label for="vazao">Vazão da torneira (litros/min) :</label>
+                <input type="text" name="txtvazao" id="vazao" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +75,9 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia a capacidade de uma caixa d'água (em litros) --&gt;
+&lt;!-- e a vazão de uma torneira (em litros por minuto) e, usando o laço --&gt;
+&lt;!-- ENQUANTO (while), calcule quantos minutos são necessários para enchê-la --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +89,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 1 - Estrutura Enquanto&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Caixa D'Água&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmcaixaenquanto"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +104,12 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="capacidade"&gt;Capacidade da caixa (litros) :&lt;/label&gt;
+            &lt;input type="text" name="txtcapacidade" id="capacidade" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="vazao"&gt;Vazão da torneira (litros/min) :&lt;/label&gt;
+            &lt;input type="text" name="txtvazao" id="vazao" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +129,37 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let capacidade = document.getElementById("capacidade").value;
+  let vazao = document.getElementById("vazao").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (capacidade === "") {
+    alert("Preencha o campo capacidade da caixa!");
+    document.getElementById("capacidade").focus();
+    return false;
+  }
+  if (vazao === "") {
+    alert("Preencha o campo vazão da torneira!");
+    document.getElementById("vazao").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let capacidadeNumero = parseFloat(capacidade);
+  let vazaoNumero = parseFloat(vazao);
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  if (vazaoNumero &lt;= 0) {
+    alert("Vazão deve ser maior que zero!");
+    return false;
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  let nivel = 0;
+  let minutos = 0;
+
+  while (nivel &lt; capacidadeNumero) {
+    nivel += vazaoNumero;
+    minutos++;
+  }
+
+  alert(`A caixa d'água ficará cheia em ${minutos} minutos`);
   return true;
 }</code></pre>
           </div>

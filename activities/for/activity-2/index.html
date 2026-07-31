@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 2 - Estrutura Para</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,24 +24,27 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> For</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
 
     <main id="conteudo">
       <div class="activity-content">
-        <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
+        <h2>Atividade 2 <span class="level-badge level-medium">Médio</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia a quantidade inicial de flexões feitas em
+          um dia e o incremento diário de repetições e, usando o laço PARA
+          (for), calcule o total de flexões feitas ao longo de 30 dias de
+          treino. A cada 7 dias tem um dia de descanso, que não conta flexões
+          nem aumenta o incremento.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Treino de Flexões</h2>
           <form
-            name="frmsaldose"
+            name="frmtreinopara"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +52,16 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="flexoesIniciais">Flexões no dia 1 :</label>
+                <input
+                  type="text"
+                  name="txtflexoesIniciais"
+                  id="flexoesIniciais"
+                />
+              </div>
+              <div class="form-group">
+                <label for="incremento">Incremento diário :</label>
+                <input type="text" name="txtincremento" id="incremento" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +80,11 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia a quantidade inicial de flexões feitas em um --&gt;
+&lt;!-- dia e o incremento diário de repetições e, usando o laço PARA (for), --&gt;
+&lt;!-- calcule o total de flexões feitas ao longo de 30 dias de treino. A cada --&gt;
+&lt;!-- 7 dias tem um dia de descanso, que não conta flexões nem aumenta o --&gt;
+&lt;!-- incremento --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +96,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 2 - Estrutura Para&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Treino de Flexões&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmtreinopara"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +111,16 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="flexoesIniciais"&gt;Flexões no dia 1 :&lt;/label&gt;
+            &lt;input
+              type="text"
+              name="txtflexoesIniciais"
+              id="flexoesIniciais"
+            /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="incremento"&gt;Incremento diário :&lt;/label&gt;
+            &lt;input type="text" name="txtincremento" id="incremento" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +140,32 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let flexoesIniciais = document.getElementById("flexoesIniciais").value;
+  let incremento = document.getElementById("incremento").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (flexoesIniciais === "") {
+    alert("Preencha o campo flexões no dia 1!");
+    document.getElementById("flexoesIniciais").focus();
+    return false;
+  }
+  if (incremento === "") {
+    alert("Preencha o campo incremento diário!");
+    document.getElementById("incremento").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let total = 0;
+  let flexoesHoje = parseFloat(flexoesIniciais);
+  let incrementoNumero = parseFloat(incremento);
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  for (let dia = 1; dia &lt;= 30; dia++) {
+    if (dia % 7 !== 0) {
+      total += flexoesHoje;
+      flexoesHoje += incrementoNumero;
+    }
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  alert(`Total de flexões em 30 dias: ${total}`);
   return true;
 }</code></pre>
           </div>

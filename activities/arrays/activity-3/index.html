@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 3 - Estrutura Vetores</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,24 +24,25 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> Arrays</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
 
     <main id="conteudo">
       <div class="activity-content">
-        <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
+        <h2>Atividade 3 <span class="level-badge level-hard">Difícil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia as notas de 5 alunos, guarde-as em um
+          vetor, calcule a média da turma e informe quantos alunos tiraram nota
+          acima da média.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Boletim da Turma</h2>
           <form
-            name="frmsaldose"
+            name="frmboletimvetor"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +50,24 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="nota1">Nota aluno 1</label>
+                <input type="number" name="txtnota1" id="nota1" />
+              </div>
+              <div class="form-group">
+                <label for="nota2">Nota aluno 2</label>
+                <input type="number" name="txtnota2" id="nota2" />
+              </div>
+              <div class="form-group">
+                <label for="nota3">Nota aluno 3</label>
+                <input type="number" name="txtnota3" id="nota3" />
+              </div>
+              <div class="form-group">
+                <label for="nota4">Nota aluno 4</label>
+                <input type="number" name="txtnota4" id="nota4" />
+              </div>
+              <div class="form-group">
+                <label for="nota5">Nota aluno 5</label>
+                <input type="number" name="txtnota5" id="nota5" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +86,9 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia as notas de 5 alunos, guarde-as em um vetor, --&gt;
+&lt;!-- calcule a média da turma e informe quantos alunos tiraram nota acima da --&gt;
+&lt;!-- média --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +100,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 3 - Vetores&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Boletim da Turma&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmboletimvetor"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +115,24 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="nota1"&gt;Nota aluno 1&lt;/label&gt;
+            &lt;input type="number" name="txtnota1" id="nota1" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="nota2"&gt;Nota aluno 2&lt;/label&gt;
+            &lt;input type="number" name="txtnota2" id="nota2" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="nota3"&gt;Nota aluno 3&lt;/label&gt;
+            &lt;input type="number" name="txtnota3" id="nota3" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="nota4"&gt;Nota aluno 4&lt;/label&gt;
+            &lt;input type="number" name="txtnota4" id="nota4" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="nota5"&gt;Nota aluno 5&lt;/label&gt;
+            &lt;input type="number" name="txtnota5" id="nota5" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +152,37 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let campos = ["nota1", "nota2", "nota3", "nota4", "nota5"];
+  let notas = [];
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
-    return false;
+  for (let i = 0; i &lt; campos.length; i++) {
+    let valor = document.getElementById(campos[i]).value;
+    if (valor === "") {
+      alert(`Preencha a nota do aluno ${i + 1}!`);
+      document.getElementById(campos[i]).focus();
+      return false;
+    }
+    notas.push(Number(valor));
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let soma = 0;
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  for (let i = 0; i &lt; notas.length; i++) {
+    soma += notas[i];
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  let media = soma / notas.length;
+  let acimaDaMedia = 0;
+
+  for (let i = 0; i &lt; notas.length; i++) {
+    if (notas[i] &gt; media) {
+      acimaDaMedia++;
+    }
+  }
+
+  alert(
+    `Média da turma: ${media.toFixed(1)} | Alunos acima da média: ${acimaDaMedia}`,
+  );
   return true;
 }</code></pre>
           </div>

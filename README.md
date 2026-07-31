@@ -12,7 +12,7 @@ Repositório de atividades de programação em HTML, CSS e JavaScript, feito pel
 - Vetores (arrays)
 - Matrizes (arrays bidimensionais)
 
-Cada estrutura tem uma página com teoria, 3 atividades (fácil/médio/difícil) e, pra cada atividade: enunciado, código-fonte e execução ao vivo no navegador.
+Cada estrutura tem uma página com a teoria e cards pras 3 atividades (fácil/médio/difícil). Clicando num card, abre a página só daquela atividade — enunciado, formulário funcional e código-fonte.
 
 ## Como abrir
 
@@ -23,16 +23,16 @@ Só abrir o `index.html` no navegador. Não precisa de servidor nem instalar nad
 ```
 index.html          página inicial
 style.css           estilo compartilhado do site
-script.js           interatividade compartilhada (abrir/fechar atividade, trocar aba, copiar código, executar)
-assets/             logos das tecnologias + CSS base compartilhado das atividades
+script.js           interatividade compartilhada (copiar código)
+assets/             logos das tecnologias + CSS base compartilhado dos formulários
 activities/
   {estrutura}/
-    index.html       página da estrutura (teoria + 3 atividades)
-    activity-1/       atividade fácil (index.html, javascript.js)
-    activity-2/       atividade média
-    activity-3/       atividade difícil
+    index.html       teoria + cards das 3 atividades
+    activity-1/       página + javascript.js da atividade fácil
+    activity-2/       página + javascript.js da atividade média
+    activity-3/       página + javascript.js da atividade difícil
 ```
 
 ## Tecnologias
 
-HTML, CSS e JavaScript puro (sem frameworks). Prism.js pra realce de sintaxe do código e Font Awesome pros ícones — ambos via CDN.
+HTML, CSS e JavaScript puro (sem frameworks). Prism.js pra realce de sintaxe do código e Font Awesome pros ícones — ambos guardados localmente em `assets/vendor/`, sem depender de CDN.

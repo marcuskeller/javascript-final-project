@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 3 - Estrutura Enquanto</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,24 +24,26 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> While</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
 
     <main id="conteudo">
       <div class="activity-content">
-        <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
+        <h2>Atividade 3 <span class="level-badge level-hard">Difícil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia o valor de uma dívida e o valor de uma
+          parcela mensal fixa e, usando o laço ENQUANTO (while), calcule quantos
+          meses são necessários para quitar a dívida, considerando juros de 1%
+          ao mês sobre o saldo restante.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Quitação de Dívida</h2>
           <form
-            name="frmsaldose"
+            name="frmdividaenquanto"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +51,12 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="divida">Valor da dívida :</label>
+                <input type="text" name="txtdivida" id="divida" />
+              </div>
+              <div class="form-group">
+                <label for="parcela">Valor da parcela mensal :</label>
+                <input type="text" name="txtparcela" id="parcela" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +75,10 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o valor de uma dívida e o valor de uma --&gt;
+&lt;!-- parcela mensal fixa e, usando o laço ENQUANTO (while), calcule quantos --&gt;
+&lt;!-- meses são necessários para quitar a dívida, considerando juros de 1% ao --&gt;
+&lt;!-- mês sobre o saldo restante --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +90,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 3 - Estrutura Enquanto&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Quitação de Dívida&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmdividaenquanto"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +105,12 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="divida"&gt;Valor da dívida :&lt;/label&gt;
+            &lt;input type="text" name="txtdivida" id="divida" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="parcela"&gt;Valor da parcela mensal :&lt;/label&gt;
+            &lt;input type="text" name="txtparcela" id="parcela" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +130,35 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let divida = document.getElementById("divida").value;
+  let parcela = document.getElementById("parcela").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (divida === "") {
+    alert("Preencha o campo valor da dívida!");
+    document.getElementById("divida").focus();
+    return false;
+  }
+  if (parcela === "") {
+    alert("Preencha o campo valor da parcela!");
+    document.getElementById("parcela").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let saldo = parseFloat(divida);
+  let parcelaNumero = parseFloat(parcela);
+  let meses = 0;
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  while (saldo &gt; 0 &amp;&amp; meses &lt; 1200) {
+    saldo = saldo * 1.01 - parcelaNumero;
+    meses++;
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  if (meses &gt;= 1200) {
+    alert("Parcela muito baixa, a dívida nunca será quitada!");
+  } else {
+    alert(`A dívida será quitada em ${meses} meses`);
+  }
+
   return true;
 }</code></pre>
           </div>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 3 - Estrutura Se...Senão</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -31,17 +31,19 @@
 
     <main id="conteudo">
       <div class="activity-content">
-        <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
+        <h2>Atividade 3 <span class="level-badge level-hard">Difícil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia as medidas dos três lados de um triângulo e
+          diga se eles formam um triângulo válido. Se formarem, classifique em
+          equilátero (3 lados iguais), isósceles (2 lados iguais) ou escaleno
+          (todos diferentes).
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Classificação de Triângulo</h2>
           <form
-            name="frmsaldose"
+            name="frmtriangulose"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +51,16 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="lado1">Lado 1 :</label>
+                <input type="text" name="txtlado1" id="lado1" />
+              </div>
+              <div class="form-group">
+                <label for="lado2">Lado 2 :</label>
+                <input type="text" name="txtlado2" id="lado2" />
+              </div>
+              <div class="form-group">
+                <label for="lado3">Lado 3 :</label>
+                <input type="text" name="txtlado3" id="lado3" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +79,10 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia as medidas dos três lados de um triângulo e --&gt;
+&lt;!-- diga se eles formam um triângulo válido. Se formarem, classifique em --&gt;
+&lt;!-- equilátero (3 lados iguais), isósceles (2 lados iguais) ou escaleno --&gt;
+&lt;!-- (todos diferentes) --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +94,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 3&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Classificação de Triângulo&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmtriangulose"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +109,16 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="lado1"&gt;Lado 1 :&lt;/label&gt;
+            &lt;input type="text" name="txtlado1" id="lado1" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="lado2"&gt;Lado 2 :&lt;/label&gt;
+            &lt;input type="text" name="txtlado2" id="lado2" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="lado3"&gt;Lado 3 :&lt;/label&gt;
+            &lt;input type="text" name="txtlado3" id="lado3" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +138,45 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let lado1 = document.getElementById("lado1").value;
+  let lado2 = document.getElementById("lado2").value;
+  let lado3 = document.getElementById("lado3").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (lado1 === "") {
+    alert("Preencha o campo lado 1!");
+    document.getElementById("lado1").focus();
+    return false;
+  }
+  if (lado2 === "") {
+    alert("Preencha o campo lado 2!");
+    document.getElementById("lado2").focus();
+    return false;
+  }
+  if (lado3 === "") {
+    alert("Preencha o campo lado 3!");
+    document.getElementById("lado3").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let a = parseFloat(lado1);
+  let b = parseFloat(lado2);
+  let c = parseFloat(lado3);
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  if (a &lt;= 0 || b &lt;= 0 || c &lt;= 0) {
+    alert("Os lados devem ser maiores que zero!");
+    return false;
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  if (a + b &lt;= c || a + c &lt;= b || b + c &lt;= a) {
+    alert("Esses valores não formam um triângulo válido.");
+  } else if (a === b &amp;&amp; b === c) {
+    alert("Triângulo equilátero: todos os lados são iguais.");
+  } else if (a === b || a === c || b === c) {
+    alert("Triângulo isósceles: dois lados são iguais.");
+  } else {
+    alert("Triângulo escaleno: todos os lados são diferentes.");
+  }
+
   return true;
 }</code></pre>
           </div>

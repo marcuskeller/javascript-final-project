@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 2 - Estrutura Se...Senão</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -31,17 +31,19 @@
 
     <main id="conteudo">
       <div class="activity-content">
-        <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
+        <h2>Atividade 2 <span class="level-badge level-medium">Médio</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia a renda mensal de uma pessoa e se o nome
+          dela está negativado (sim ou não), e diga se o empréstimo bancário foi
+          aprovado. O empréstimo só é aprovado se a renda for maior ou igual a
+          R$2000,00 e o nome não estiver negativado.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Empréstimo Bancário</h2>
           <form
-            name="frmsaldose"
+            name="frmemprestimose"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +51,12 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="renda">Renda mensal :</label>
+                <input type="text" name="txtrenda" id="renda" />
+              </div>
+              <div class="form-group">
+                <label for="negativado">Nome negativado (sim/nao) :</label>
+                <input type="text" name="txtnegativado" id="negativado" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +75,10 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia a renda mensal de uma pessoa e se o nome --&gt;
+&lt;!-- dela está negativado (sim ou não), e diga se o empréstimo bancário foi --&gt;
+&lt;!-- aprovado. O empréstimo só é aprovado se a renda for maior ou igual a --&gt;
+&lt;!-- R$2000,00 e o nome não estiver negativado --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +90,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 2&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Empréstimo Bancário&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmemprestimose"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +105,12 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="renda"&gt;Renda mensal :&lt;/label&gt;
+            &lt;input type="text" name="txtrenda" id="renda" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="negativado"&gt;Nome negativado (sim/nao) :&lt;/label&gt;
+            &lt;input type="text" name="txtnegativado" id="negativado" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +130,35 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let renda = document.getElementById("renda").value;
+  let negativado = document.getElementById("negativado").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (renda === "") {
+    alert("Preencha o campo renda mensal!");
+    document.getElementById("renda").focus();
+    return false;
+  }
+  if (negativado === "") {
+    alert("Preencha o campo nome negativado!");
+    document.getElementById("negativado").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let rendaNumero = parseFloat(renda);
+  let negativadoMinusculo = negativado.toLowerCase();
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
+  if (rendaNumero &gt;= 2000 &amp;&amp; negativadoMinusculo === "nao") {
+    alert("Empréstimo aprovado!");
   } else {
-    situacao = "zerado";
+    if (rendaNumero &lt; 2000 &amp;&amp; negativadoMinusculo !== "nao") {
+      alert("Empréstimo reprovado: renda insuficiente e nome negativado.");
+    } else if (rendaNumero &lt; 2000) {
+      alert("Empréstimo reprovado: renda insuficiente.");
+    } else {
+      alert("Empréstimo reprovado: nome negativado.");
+    }
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
   return true;
 }</code></pre>
           </div>

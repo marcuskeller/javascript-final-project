@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 1 - Estrutura Vetores</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,7 +24,7 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> Arrays</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
@@ -33,15 +33,15 @@
       <div class="activity-content">
         <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia os preços de 5 produtos de um carrinho de
+          compras, guarde-os em um vetor e calcule o valor total da compra.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Carrinho de Compras</h2>
           <form
-            name="frmsaldose"
+            name="frmcarrinhovetor"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +49,24 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="preco1">Preço produto 1</label>
+                <input type="number" name="txtpreco1" id="preco1" />
+              </div>
+              <div class="form-group">
+                <label for="preco2">Preço produto 2</label>
+                <input type="number" name="txtpreco2" id="preco2" />
+              </div>
+              <div class="form-group">
+                <label for="preco3">Preço produto 3</label>
+                <input type="number" name="txtpreco3" id="preco3" />
+              </div>
+              <div class="form-group">
+                <label for="preco4">Preço produto 4</label>
+                <input type="number" name="txtpreco4" id="preco4" />
+              </div>
+              <div class="form-group">
+                <label for="preco5">Preço produto 5</label>
+                <input type="number" name="txtpreco5" id="preco5" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +85,8 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia os preços de 5 produtos de um carrinho de --&gt;
+&lt;!-- compras, guarde-os em um vetor e calcule o valor total da compra --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +98,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 1 - Vetores&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Carrinho de Compras&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmcarrinhovetor"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +113,24 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="preco1"&gt;Preço produto 1&lt;/label&gt;
+            &lt;input type="number" name="txtpreco1" id="preco1" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="preco2"&gt;Preço produto 2&lt;/label&gt;
+            &lt;input type="number" name="txtpreco2" id="preco2" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="preco3"&gt;Preço produto 3&lt;/label&gt;
+            &lt;input type="number" name="txtpreco3" id="preco3" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="preco4"&gt;Preço produto 4&lt;/label&gt;
+            &lt;input type="number" name="txtpreco4" id="preco4" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="preco5"&gt;Preço produto 5&lt;/label&gt;
+            &lt;input type="number" name="txtpreco5" id="preco5" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +150,26 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let campos = ["preco1", "preco2", "preco3", "preco4", "preco5"];
+  let precos = [];
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
-    return false;
+  for (let i = 0; i &lt; campos.length; i++) {
+    let valor = document.getElementById(campos[i]).value;
+    if (valor === "") {
+      alert(`Preencha o preço do produto ${i + 1}!`);
+      document.getElementById(campos[i]).focus();
+      return false;
+    }
+    precos.push(Number(valor));
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let total = 0;
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  for (let i = 0; i &lt; precos.length; i++) {
+    total += precos[i];
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  alert(`Valor total da compra: R$ ${total.toFixed(2)}`);
   return true;
 }</code></pre>
           </div>

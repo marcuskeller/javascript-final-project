@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 1 - Estrutura Faça...Enquanto</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,7 +24,7 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> Do...While</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
@@ -33,15 +33,17 @@
       <div class="activity-content">
         <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia a quantidade inicial de um produto em
+          estoque e a quantidade vendida por dia e, usando o laço
+          FAÇA...ENQUANTO (do...while), calcule em quantos dias o estoque irá
+          acabar.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Estoque</h2>
           <form
-            name="frmsaldose"
+            name="frmestoquefaca"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +51,12 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="estoque">Estoque inicial :</label>
+                <input type="text" name="txtestoque" id="estoque" />
+              </div>
+              <div class="form-group">
+                <label for="vendaDiaria">Venda diária :</label>
+                <input type="text" name="txtvendaDiaria" id="vendaDiaria" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +75,9 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia a quantidade inicial de um produto em --&gt;
+&lt;!-- estoque e a quantidade vendida por dia e, usando o laço FAÇA...ENQUANTO --&gt;
+&lt;!-- (do...while), calcule em quantos dias o estoque irá acabar --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +89,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 1 - Estrutura Faça...Enquanto&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Estoque&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmestoquefaca"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +104,12 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="estoque"&gt;Estoque inicial :&lt;/label&gt;
+            &lt;input type="text" name="txtestoque" id="estoque" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="vendaDiaria"&gt;Venda diária :&lt;/label&gt;
+            &lt;input type="text" name="txtvendaDiaria" id="vendaDiaria" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +129,36 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let estoque = document.getElementById("estoque").value;
+  let vendaDiaria = document.getElementById("vendaDiaria").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (estoque === "") {
+    alert("Preencha o campo estoque!");
+    document.getElementById("estoque").focus();
+    return false;
+  }
+  if (vendaDiaria === "") {
+    alert("Preencha o campo venda diária!");
+    document.getElementById("vendaDiaria").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let vendaDiariaNumero = parseFloat(vendaDiaria);
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  if (vendaDiariaNumero &lt;= 0) {
+    alert("A venda diária deve ser maior que zero!");
+    return false;
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  let restante = parseFloat(estoque);
+  let dias = 0;
+
+  do {
+    restante -= vendaDiariaNumero;
+    dias++;
+  } while (restante &gt; 0);
+
+  alert(`O estoque irá acabar em ${dias} dias`);
   return true;
 }</code></pre>
           </div>

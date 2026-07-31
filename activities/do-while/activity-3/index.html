@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 3 - Estrutura Faça...Enquanto</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,24 +24,26 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> Do...While</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
 
     <main id="conteudo">
       <div class="activity-content">
-        <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
+        <h2>Atividade 3 <span class="level-badge level-hard">Difícil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia o valor inicial de um veículo e a taxa de
+          depreciação anual (%) e, usando o laço FAÇA...ENQUANTO (do...while),
+          calcule em quantos anos o valor do veículo cairá para menos da metade
+          do valor original.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Depreciação de Veículo</h2>
           <form
-            name="frmsaldose"
+            name="frmveiculofaca"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +51,12 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="valorInicial">Valor inicial do veículo :</label>
+                <input type="text" name="txtvalorInicial" id="valorInicial" />
+              </div>
+              <div class="form-group">
+                <label for="taxa">Taxa de depreciação anual (%) :</label>
+                <input type="text" name="txttaxa" id="taxa" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +75,10 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o valor inicial de um veículo e a taxa de --&gt;
+&lt;!-- depreciação anual (%) e, usando o laço FAÇA...ENQUANTO (do...while), --&gt;
+&lt;!-- calcule em quantos anos o valor do veículo cairá para menos da metade --&gt;
+&lt;!-- do valor original --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +90,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 3 - Estrutura Faça...Enquanto&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Depreciação de Veículo&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmveiculofaca"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +105,12 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="valorInicial"&gt;Valor inicial do veículo :&lt;/label&gt;
+            &lt;input type="text" name="txtvalorInicial" id="valorInicial" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="taxa"&gt;Taxa de depreciação anual (%) :&lt;/label&gt;
+            &lt;input type="text" name="txttaxa" id="taxa" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +130,37 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let valorInicial = document.getElementById("valorInicial").value;
+  let taxa = document.getElementById("taxa").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (valorInicial === "") {
+    alert("Preencha o campo valor inicial do veículo!");
+    document.getElementById("valorInicial").focus();
+    return false;
+  }
+  if (taxa === "") {
+    alert("Preencha o campo taxa de depreciação!");
+    document.getElementById("taxa").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let taxaNumero = parseFloat(taxa);
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  if (taxaNumero &lt;= 0) {
+    alert("A taxa de depreciação deve ser maior que zero!");
+    return false;
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  let valor = parseFloat(valorInicial);
+  let limite = valor / 2;
+  let anos = 0;
+
+  do {
+    valor -= valor * (taxaNumero / 100);
+    anos++;
+  } while (valor &gt; limite);
+
+  alert(`O veículo valerá menos da metade do valor original em ${anos} anos`);
   return true;
 }</code></pre>
           </div>

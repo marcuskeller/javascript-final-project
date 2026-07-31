@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atividade 2 - Estrutura Matrizes</title>
+    <link rel="stylesheet" type="text/css" href="../../../style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/form-basic.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../assets/vendor/fontawesome/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../../assets/vendor/prism/prism-line-numbers.min.css"
+    />
+    <script src="javascript.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <a class="back-link" href="../index.html"
+        ><i class="fa-solid fa-arrow-left"></i> Matrices</a
+      >
+      <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
+    </header>
+
+    <main id="conteudo">
+      <div class="activity-content">
+        <h2>Atividade 2 <span class="level-badge level-medium">Médio</span></h2>
+        <p class="statement">
+          Faça um algoritmo que leia os 9 elementos de uma matriz 3x3 e mostre
+          qual é o maior elemento e a sua posição (linha e coluna).
+        </p>
+
+        <h3 class="section-label">Resultado</h3>
+        <section class="demo">
+          <h2>Maior Elemento da Matriz</h2>
+          <form
+            name="frmmaiormatriz"
+            action="#"
+            method="get"
+            onsubmit="return validaFormulario();"
+          >
+            <fieldset class="form-card">
+              <legend>Entrada de dados</legend>
+              <div class="form-group">
+                <label for="m11">Elemento (1,1)</label>
+                <input type="number" name="txtm11" id="m11" />
+              </div>
+              <div class="form-group">
+                <label for="m12">Elemento (1,2)</label>
+                <input type="number" name="txtm12" id="m12" />
+              </div>
+              <div class="form-group">
+                <label for="m13">Elemento (1,3)</label>
+                <input type="number" name="txtm13" id="m13" />
+              </div>
+              <div class="form-group">
+                <label for="m21">Elemento (2,1)</label>
+                <input type="number" name="txtm21" id="m21" />
+              </div>
+              <div class="form-group">
+                <label for="m22">Elemento (2,2)</label>
+                <input type="number" name="txtm22" id="m22" />
+              </div>
+              <div class="form-group">
+                <label for="m23">Elemento (2,3)</label>
+                <input type="number" name="txtm23" id="m23" />
+              </div>
+              <div class="form-group">
+                <label for="m31">Elemento (3,1)</label>
+                <input type="number" name="txtm31" id="m31" />
+              </div>
+              <div class="form-group">
+                <label for="m32">Elemento (3,2)</label>
+                <input type="number" name="txtm32" id="m32" />
+              </div>
+              <div class="form-group">
+                <label for="m33">Elemento (3,3)</label>
+                <input type="number" name="txtm33" id="m33" />
+              </div>
+              <div class="form-buttons">
+                <button type="reset">Limpar</button>
+                <button type="submit">Enviar</button>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+
+        <h3 class="section-label">Código-fonte</h3>
+        <div>
+          <div class="code-block">
+            <div class="code-toolbar">
+              <span class="code-filename">index.html</span>
+              <button type="button" class="copy-btn">Copiar</button>
+            </div>
+            <pre
+              class="line-numbers"
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia os 9 elementos de uma matriz 3x3 e mostre --&gt;
+&lt;!-- qual é o maior elemento e a sua posição (linha e coluna) --&gt;
+&lt;!doctype html&gt;
+&lt;html lang="pt-BR"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;link
+      rel="stylesheet"
+      type="text/css"
+      href="../../../assets/form-basic.css"
+    /&gt;
+    &lt;script src="javascript.js"&gt;&lt;/script&gt;
+    &lt;title&gt;Atividade 2 - Matrizes&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Maior Elemento da Matriz&lt;/h2&gt;
+      &lt;form
+        name="frmmaiormatriz"
+        action="#"
+        method="get"
+        onsubmit="return validaFormulario();"
+      &gt;
+        &lt;fieldset class="form-card"&gt;
+          &lt;legend&gt;Entrada de dados&lt;/legend&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m11"&gt;Elemento (1,1)&lt;/label&gt;
+            &lt;input type="number" name="txtm11" id="m11" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m12"&gt;Elemento (1,2)&lt;/label&gt;
+            &lt;input type="number" name="txtm12" id="m12" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m13"&gt;Elemento (1,3)&lt;/label&gt;
+            &lt;input type="number" name="txtm13" id="m13" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m21"&gt;Elemento (2,1)&lt;/label&gt;
+            &lt;input type="number" name="txtm21" id="m21" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m22"&gt;Elemento (2,2)&lt;/label&gt;
+            &lt;input type="number" name="txtm22" id="m22" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m23"&gt;Elemento (2,3)&lt;/label&gt;
+            &lt;input type="number" name="txtm23" id="m23" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m31"&gt;Elemento (3,1)&lt;/label&gt;
+            &lt;input type="number" name="txtm31" id="m31" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m32"&gt;Elemento (3,2)&lt;/label&gt;
+            &lt;input type="number" name="txtm32" id="m32" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="m33"&gt;Elemento (3,3)&lt;/label&gt;
+            &lt;input type="number" name="txtm33" id="m33" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-buttons"&gt;
+            &lt;button type="reset"&gt;Limpar&lt;/button&gt;
+            &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/fieldset&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-toolbar">
+              <span class="code-filename">javascript.js</span>
+              <button type="button" class="copy-btn">Copiar</button>
+            </div>
+            <pre
+              class="line-numbers"
+            ><code class="language-javascript">function validaFormulario() {
+  let campos = ["m11", "m12", "m13", "m21", "m22", "m23", "m31", "m32", "m33"];
+  let valores = [];
+
+  for (let i = 0; i &lt; campos.length; i++) {
+    let valor = document.getElementById(campos[i]).value;
+    if (valor === "") {
+      alert(`Preencha o elemento (${campos[i][1]},${campos[i][2]}) da matriz!`);
+      document.getElementById(campos[i]).focus();
+      return false;
+    }
+    valores.push(Number(valor));
+  }
+
+  let matriz = [
+    [valores[0], valores[1], valores[2]],
+    [valores[3], valores[4], valores[5]],
+    [valores[6], valores[7], valores[8]],
+  ];
+
+  let maior = matriz[0][0];
+  let linhaMaior = 0;
+  let colunaMaior = 0;
+
+  for (let i = 0; i &lt; matriz.length; i++) {
+    for (let j = 0; j &lt; matriz[i].length; j++) {
+      if (matriz[i][j] &gt; maior) {
+        maior = matriz[i][j];
+        linhaMaior = i;
+        colunaMaior = j;
+      }
+    }
+  }
+
+  alert(
+    `Maior elemento: ${maior} (linha ${linhaMaior + 1}, coluna ${colunaMaior + 1})`,
+  );
+  return true;
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../../../script.js"></script>
+    <footer>
+      <p>Marcus Keller &copy; 2026</p>
+    </footer>
+    <script src="../../../assets/vendor/prism/prism.min.js"></script>
+    <script src="../../../assets/vendor/prism/prism-line-numbers.min.js"></script>
+  </body>
+</html>

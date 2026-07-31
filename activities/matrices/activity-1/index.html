@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atividade 1 - Estrutura Se...Senão</title>
+    <title>Atividade 1 - Estrutura Matrizes</title>
     <link rel="stylesheet" type="text/css" href="../../../style.css" />
     <link
       rel="stylesheet"
@@ -24,7 +24,7 @@
   <body>
     <header>
       <a class="back-link" href="../index.html"
-        ><i class="fa-solid fa-arrow-left"></i> If...Else</a
+        ><i class="fa-solid fa-arrow-left"></i> Matrices</a
       >
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
     </header>
@@ -33,15 +33,15 @@
       <div class="activity-content">
         <h2>Atividade 1 <span class="level-badge level-easy">Fácil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e
-          diga se o saldo está positivo, negativo (em dívida) ou zerado.
+          Faça um algoritmo que leia os 4 elementos de uma matriz 2x2 e mostre a
+          soma de todos os elementos.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="demo">
-          <h2>Saldo Bancário</h2>
+          <h2>Soma da Matriz</h2>
           <form
-            name="frmsaldose"
+            name="frmsomamatriz"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -49,8 +49,20 @@
             <fieldset class="form-card">
               <legend>Entrada de dados</legend>
               <div class="form-group">
-                <label for="saldo">Saldo da conta :</label>
-                <input type="text" name="txtsaldo" id="saldo" />
+                <label for="a11">Elemento (1,1)</label>
+                <input type="number" name="txta11" id="a11" />
+              </div>
+              <div class="form-group">
+                <label for="a12">Elemento (1,2)</label>
+                <input type="number" name="txta12" id="a12" />
+              </div>
+              <div class="form-group">
+                <label for="a21">Elemento (2,1)</label>
+                <input type="number" name="txta21" id="a21" />
+              </div>
+              <div class="form-group">
+                <label for="a22">Elemento (2,2)</label>
+                <input type="number" name="txta22" id="a22" />
               </div>
               <div class="form-buttons">
                 <button type="reset">Limpar</button>
@@ -69,8 +81,8 @@
             </div>
             <pre
               class="line-numbers"
-            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia o saldo da conta bancária de uma pessoa e --&gt;
-&lt;!-- diga se o saldo está positivo, negativo (em dívida) ou zerado --&gt;
+            ><code class="language-markup">&lt;!-- Faça um algoritmo que leia os 4 elementos de uma matriz 2x2 e mostre a --&gt;
+&lt;!-- soma de todos os elementos --&gt;
 &lt;!doctype html&gt;
 &lt;html lang="pt-BR"&gt;
   &lt;head&gt;
@@ -82,14 +94,14 @@
       href="../../../assets/form-basic.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
-    &lt;title&gt;Atividade 1&lt;/title&gt;
+    &lt;title&gt;Atividade 1 - Matrizes&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
     &lt;section&gt;
-      &lt;h2&gt;Saldo Bancário&lt;/h2&gt;
+      &lt;h2&gt;Soma da Matriz&lt;/h2&gt;
       &lt;form
-        name="frmsaldose"
+        name="frmsomamatriz"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -97,8 +109,20 @@
         &lt;fieldset class="form-card"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
           &lt;div class="form-group"&gt;
-            &lt;label for="saldo"&gt;Saldo da conta :&lt;/label&gt;
-            &lt;input type="text" name="txtsaldo" id="saldo" /&gt;
+            &lt;label for="a11"&gt;Elemento (1,1)&lt;/label&gt;
+            &lt;input type="number" name="txta11" id="a11" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="a12"&gt;Elemento (1,2)&lt;/label&gt;
+            &lt;input type="number" name="txta12" id="a12" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="a21"&gt;Elemento (2,1)&lt;/label&gt;
+            &lt;input type="number" name="txta21" id="a21" /&gt;
+          &lt;/div&gt;
+          &lt;div class="form-group"&gt;
+            &lt;label for="a22"&gt;Elemento (2,2)&lt;/label&gt;
+            &lt;input type="number" name="txta22" id="a22" /&gt;
           &lt;/div&gt;
           &lt;div class="form-buttons"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
@@ -118,26 +142,46 @@
             <pre
               class="line-numbers"
             ><code class="language-javascript">function validaFormulario() {
-  let saldo = document.getElementById("saldo").value;
+  let a11 = document.getElementById("a11").value;
+  let a12 = document.getElementById("a12").value;
+  let a21 = document.getElementById("a21").value;
+  let a22 = document.getElementById("a22").value;
 
-  if (saldo === "") {
-    alert("Preencha o campo saldo!");
-    document.getElementById("saldo").focus();
+  if (a11 === "") {
+    alert("Preencha o elemento (1,1) da matriz!");
+    document.getElementById("a11").focus();
+    return false;
+  }
+  if (a12 === "") {
+    alert("Preencha o elemento (1,2) da matriz!");
+    document.getElementById("a12").focus();
+    return false;
+  }
+  if (a21 === "") {
+    alert("Preencha o elemento (2,1) da matriz!");
+    document.getElementById("a21").focus();
+    return false;
+  }
+  if (a22 === "") {
+    alert("Preencha o elemento (2,2) da matriz!");
+    document.getElementById("a22").focus();
     return false;
   }
 
-  let saldoNumero = parseFloat(saldo);
-  let situacao = "";
+  let matriz = [
+    [Number(a11), Number(a12)],
+    [Number(a21), Number(a22)],
+  ];
 
-  if (saldoNumero &gt; 0) {
-    situacao = "positivo";
-  } else if (saldoNumero &lt; 0) {
-    situacao = "negativo (em dívida)";
-  } else {
-    situacao = "zerado";
+  let soma = 0;
+
+  for (let i = 0; i &lt; matriz.length; i++) {
+    for (let j = 0; j &lt; matriz[i].length; j++) {
+      soma += matriz[i][j];
+    }
   }
 
-  alert(`Seu saldo é ${saldoNumero} e está ${situacao}`);
+  alert(`Soma de todos os elementos da matriz: ${soma}`);
   return true;
 }</code></pre>
           </div>
