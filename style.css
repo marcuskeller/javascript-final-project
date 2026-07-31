@@ -1,0 +1,359 @@
+:root {
+  --bg: #eef1f8;
+  --header-bg: #16213e;
+  --accent: #164194;
+  --text: #1c2230;
+  --text-muted: #667085;
+  --border: #e1e5f0;
+  --code-bg: #1a1e2b;
+  --code-text: #e6e9f7;
+  --shadow-color: 22, 33, 62;
+  --font:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --level-easy: #2e7d32;
+  --level-medium: #ef6c00;
+  --level-hard: #c62828;
+  --white: #fff;
+  --white-rgb: 255, 255, 255;
+  --black-rgb: 0, 0, 0;
+  --statement-bg: #f6f7fc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font), serif;
+  color: var(--text);
+  background-color: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+header {
+  background-color: var(--header-bg);
+  color: var(--white);
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(var(--black-rgb), 0.15);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+header h1 a {
+  color: var(--white);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+header h1 a:hover {
+  opacity: 0.85;
+}
+
+.back-link {
+  color: rgba(var(--white-rgb), 0.75);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding-right: 20px;
+  border-right: 1px solid rgba(var(--white-rgb), 0.2);
+  transition: opacity 0.15s ease;
+}
+
+.back-link:hover {
+  opacity: 0.85;
+}
+
+footer {
+  background-color: var(--header-bg);
+  color: rgba(var(--white-rgb), 0.7);
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+footer p {
+  margin: 0;
+}
+
+#conteudo {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+#conteudo h2 {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 6px;
+  margin-top: 32px;
+}
+
+.topics-group h3 {
+  margin: 22px 0 10px 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+}
+
+.topics-group h3:first-of-type {
+  margin-top: 0;
+}
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 190px));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.topic-card {
+  display: block;
+  background-color: var(--bg);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.topic-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.topic-card strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.topic-card .card-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* cor por nível de dificuldade da atividade */
+.topic-card.level-easy {
+  border-top-color: var(--level-easy);
+}
+
+.topic-card.level-medium {
+  border-top-color: var(--level-medium);
+}
+
+.topic-card.level-hard {
+  border-top-color: var(--level-hard);
+}
+
+.tech-stack {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.tech-card {
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.tech-card img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 14px;
+}
+
+.tech-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.tech-card p {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.tech-card a {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.tech-card a:hover {
+  text-decoration: underline;
+}
+
+.activity-content {
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
+  padding: 28px 30px;
+  margin-bottom: 20px;
+}
+
+.level-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: var(--white);
+  vertical-align: middle;
+}
+
+.level-badge.level-easy {
+  background-color: var(--level-easy);
+}
+
+.level-badge.level-medium {
+  background-color: var(--level-medium);
+}
+
+.level-badge.level-hard {
+  background-color: var(--level-hard);
+}
+
+.theory h3 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin: 18px 0 8px 0;
+}
+
+.theory ul {
+  margin: 0 0 14px 0;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+
+.theory a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.theory a:hover {
+  text-decoration: underline;
+}
+
+.statement {
+  background-color: var(--statement-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  line-height: 1.55;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-muted);
+  margin: 24px 0 12px 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.code-block {
+  margin-bottom: 20px;
+}
+
+.code-block:last-child {
+  margin-bottom: 0;
+}
+
+.code-toolbar {
+  background-color: var(--code-bg);
+  padding: 8px 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.code-filename {
+  font-family: "SFMono-Regular", Consolas, Menlo, monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--code-text);
+}
+
+.code-block pre {
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  border-radius: 0 0 8px 8px;
+  max-height: 520px;
+  overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.code-block pre::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .tech-stack {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    padding: 12px 16px;
+  }
+
+  header h1 {
+    font-size: 15px;
+  }
+
+  #conteudo {
+    padding: 20px 16px;
+  }
+
+  .activity-content {
+    padding: 20px 18px;
+  }
+}
