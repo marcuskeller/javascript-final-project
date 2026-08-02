@@ -8,7 +8,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="../../../assets/form-basic.css"
+      href="../../../assets/formulario-base.css"
     />
     <script src="javascript.js"></script>
   </head>
@@ -30,7 +30,7 @@
         </p>
 
         <h3 class="section-label">Resultado</h3>
-        <section class="demo">
+        <section class="formulario">
           <h2>Meta de Economia</h2>
           <form
             name="frmmetafaca"
@@ -38,21 +38,21 @@
             method="get"
             onsubmit="return validaFormulario();"
           >
-            <fieldset class="form-card">
+            <fieldset class="cartao-formulario">
               <legend>Entrada de dados</legend>
-              <div class="form-group">
+              <div class="grupo-campo">
                 <label for="guardado">Valor já guardado :</label>
                 <input type="text" name="txtguardado" id="guardado" />
               </div>
-              <div class="form-group">
+              <div class="grupo-campo">
                 <label for="economia">Economia mensal :</label>
                 <input type="text" name="txteconomia" id="economia" />
               </div>
-              <div class="form-group">
+              <div class="grupo-campo">
                 <label for="meta">Meta de economia :</label>
                 <input type="text" name="txtmeta" id="meta" />
               </div>
-              <div class="form-buttons">
+              <div class="botoes-formulario">
                 <button type="reset">Limpar</button>
                 <button type="submit">Enviar</button>
               </div>
@@ -77,14 +77,14 @@
     &lt;link
       rel="stylesheet"
       type="text/css"
-      href="../../../assets/form-basic.css"
+      href="../../../assets/formulario-base.css"
     /&gt;
     &lt;script src="javascript.js"&gt;&lt;/script&gt;
     &lt;title&gt;Atividade 2 - Estrutura Faça...Enquanto&lt;/title&gt;
   &lt;/head&gt;
 
   &lt;body&gt;
-    &lt;section&gt;
+    &lt;section class="formulario"&gt;
       &lt;h2&gt;Meta de Economia&lt;/h2&gt;
       &lt;form
         name="frmmetafaca"
@@ -92,21 +92,21 @@
         method="get"
         onsubmit="return validaFormulario();"
       &gt;
-        &lt;fieldset class="form-card"&gt;
+        &lt;fieldset class="cartao-formulario"&gt;
           &lt;legend&gt;Entrada de dados&lt;/legend&gt;
-          &lt;div class="form-group"&gt;
+          &lt;div class="grupo-campo"&gt;
             &lt;label for="guardado"&gt;Valor já guardado :&lt;/label&gt;
             &lt;input type="text" name="txtguardado" id="guardado" /&gt;
           &lt;/div&gt;
-          &lt;div class="form-group"&gt;
+          &lt;div class="grupo-campo"&gt;
             &lt;label for="economia"&gt;Economia mensal :&lt;/label&gt;
             &lt;input type="text" name="txteconomia" id="economia" /&gt;
           &lt;/div&gt;
-          &lt;div class="form-group"&gt;
+          &lt;div class="grupo-campo"&gt;
             &lt;label for="meta"&gt;Meta de economia :&lt;/label&gt;
             &lt;input type="text" name="txtmeta" id="meta" /&gt;
           &lt;/div&gt;
-          &lt;div class="form-buttons"&gt;
+          &lt;div class="botoes-formulario"&gt;
             &lt;button type="reset"&gt;Limpar&lt;/button&gt;
             &lt;button type="submit"&gt;Enviar&lt;/button&gt;
           &lt;/div&gt;
@@ -115,6 +115,94 @@
     &lt;/section&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-toolbar">
+              <span class="code-filename">formulario-base.css</span>
+            </div>
+            <pre><code>/* CSS base, compartilhado por todos os formulários das atividades */
+
+.formulario {
+  margin: 0 auto;
+  max-width: 420px;
+}
+
+.formulario h2 {
+  text-align: center;
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cartao-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.cartao-formulario legend {
+  font-weight: 700;
+  padding: 0 6px;
+  color: var(--accent);
+}
+
+.grupo-campo label {
+  display: block;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.grupo-campo input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.grupo-campo input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.botoes-formulario {
+  display: flex;
+  gap: 8px;
+}
+
+.botoes-formulario button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: var(--accent);
+  color: var(--white);
+  transition: opacity 0.15s ease;
+}
+
+.botoes-formulario button:hover {
+  opacity: 0.85;
+}
+
+.botoes-formulario button[type="reset"] {
+  background-color: var(--border);
+  color: var(--text);
+}</code></pre>
           </div>
           <div class="code-block">
             <div class="code-toolbar">

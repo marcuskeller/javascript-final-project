@@ -1,24 +1,24 @@
-/* estilo compartilhado dos formulários de demonstração das atividades */
+/* CSS base, compartilhado por todos os formulários das atividades */
 
-.demo {
+.formulario {
   margin: 0 auto;
   max-width: 420px;
 }
 
-.demo h2 {
+.formulario h2 {
   text-align: center;
   margin: 0 0 20px 0;
   font-size: 22px;
   color: var(--text);
 }
 
-.demo form {
+.formulario form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-.form-card {
+.cartao-formulario {
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -30,20 +30,20 @@
   margin: 0 auto;
 }
 
-.form-card legend {
+.cartao-formulario legend {
   font-weight: 700;
   padding: 0 6px;
   color: var(--accent);
 }
 
-.form-group label {
+.grupo-campo label {
   display: block;
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 6px;
 }
 
-.form-group input {
+.grupo-campo input {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--border);
@@ -51,17 +51,17 @@
   font-size: 14px;
 }
 
-.form-group input:focus {
+.grupo-campo input:focus {
   outline: none;
   border-color: var(--accent);
 }
 
-.form-buttons {
+.botoes-formulario {
   display: flex;
   gap: 8px;
 }
 
-.form-buttons button {
+.botoes-formulario button {
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
@@ -73,11 +73,11 @@
   transition: opacity 0.15s ease;
 }
 
-.form-buttons button:hover {
+.botoes-formulario button:hover {
   opacity: 0.85;
 }
 
-.form-buttons button[type="reset"] {
+.botoes-formulario button[type="reset"] {
   background-color: var(--border);
   color: var(--text);
 }
