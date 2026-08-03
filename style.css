@@ -317,6 +317,11 @@ footer p {
   max-height: 520px;
   overflow-x: auto;
   overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.code-block pre::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width: 640px) {
