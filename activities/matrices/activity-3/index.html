@@ -23,15 +23,17 @@
       <div class="activity-content">
         <h2>Atividade 3 <span class="level-badge level-hard">Difícil</span></h2>
         <p class="statement">
-          Faça um algoritmo que leia os elementos de duas matrizes 2x2 e mostre
-          o resultado da multiplicação entre elas.
+          Faça um algoritmo que leia os elementos de duas matrizes 2x2 (Matriz A
+          e Matriz B) e calcule a matriz soma entre elas. Na soma de matrizes,
+          cada elemento do resultado é a soma dos elementos que estão na mesma
+          posição nas duas matrizes.
         </p>
 
         <h3 class="section-label">Resultado</h3>
         <section class="formulario">
-          <h2>Multiplicação de Matrizes</h2>
+          <h2>Soma de Matrizes</h2>
           <form
-            name="frmmultmatriz"
+            name="frmsomamatrizes"
             action="#"
             method="get"
             onsubmit="return validaFormulario();"
@@ -103,9 +105,9 @@
 
   &lt;body&gt;
     &lt;section class="formulario"&gt;
-      &lt;h2&gt;Multiplicação de Matrizes&lt;/h2&gt;
+      &lt;h2&gt;Soma de Matrizes&lt;/h2&gt;
       &lt;form
-        name="frmmultmatriz"
+        name="frmsomamatrizes"
         action="#"
         method="get"
         onsubmit="return validaFormulario();"
@@ -250,43 +252,74 @@
               <span class="code-filename">javascript.js</span>
             </div>
             <pre><code>function validaFormulario() {
-  let campos = ["matrizA11", "matrizA12", "matrizA21", "matrizA22", "matrizB11", "matrizB12", "matrizB21", "matrizB22"];
-  let valores = [];
+  let matrizA11 = document.getElementById("matrizA11").value;
+  let matrizA12 = document.getElementById("matrizA12").value;
+  let matrizA21 = document.getElementById("matrizA21").value;
+  let matrizA22 = document.getElementById("matrizA22").value;
+  let matrizB11 = document.getElementById("matrizB11").value;
+  let matrizB12 = document.getElementById("matrizB12").value;
+  let matrizB21 = document.getElementById("matrizB21").value;
+  let matrizB22 = document.getElementById("matrizB22").value;
 
-  for (let i = 0; i &lt; campos.length; i++) {
-    let valor = document.getElementById(campos[i]).value;
-    if (valor === "") {
-      let info = campos[i].slice(6);
-      alert(`Preencha o elemento (${info[1]},${info[2]}) da matriz ${info[0]}!`);
-      document.getElementById(campos[i]).focus();
-      return false;
-    }
-    valores.push(Number(valor));
+  if (matrizA11 === "") {
+    alert("Preencha o elemento (1,1) da matriz A!");
+    document.getElementById("matrizA11").focus();
+    return false;
+  }
+  if (matrizA12 === "") {
+    alert("Preencha o elemento (1,2) da matriz A!");
+    document.getElementById("matrizA12").focus();
+    return false;
+  }
+  if (matrizA21 === "") {
+    alert("Preencha o elemento (2,1) da matriz A!");
+    document.getElementById("matrizA21").focus();
+    return false;
+  }
+  if (matrizA22 === "") {
+    alert("Preencha o elemento (2,2) da matriz A!");
+    document.getElementById("matrizA22").focus();
+    return false;
+  }
+  if (matrizB11 === "") {
+    alert("Preencha o elemento (1,1) da matriz B!");
+    document.getElementById("matrizB11").focus();
+    return false;
+  }
+  if (matrizB12 === "") {
+    alert("Preencha o elemento (1,2) da matriz B!");
+    document.getElementById("matrizB12").focus();
+    return false;
+  }
+  if (matrizB21 === "") {
+    alert("Preencha o elemento (2,1) da matriz B!");
+    document.getElementById("matrizB21").focus();
+    return false;
+  }
+  if (matrizB22 === "") {
+    alert("Preencha o elemento (2,2) da matriz B!");
+    document.getElementById("matrizB22").focus();
+    return false;
   }
 
   let matrizA = [
-    [valores[0], valores[1]],
-    [valores[2], valores[3]],
+    [Number(matrizA11), Number(matrizA12)],
+    [Number(matrizA21), Number(matrizA22)],
   ];
 
   let matrizB = [
-    [valores[4], valores[5]],
-    [valores[6], valores[7]],
+    [Number(matrizB11), Number(matrizB12)],
+    [Number(matrizB21), Number(matrizB22)],
   ];
 
-  let resultado = [
-    [0, 0],
-    [0, 0],
-  ];
+  let resultado = [];
 
   for (let i = 0; i &lt; 2; i++) {
+    let linha = [];
     for (let j = 0; j &lt; 2; j++) {
-      let soma = 0;
-      for (let k = 0; k &lt; 2; k++) {
-        soma += matrizA[i][k] * matrizB[k][j];
-      }
-      resultado[i][j] = soma;
+      linha.push(matrizA[i][j] + matrizB[i][j]);
     }
+    resultado.push(linha);
   }
 
   alert(
