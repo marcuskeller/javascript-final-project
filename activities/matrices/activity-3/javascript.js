@@ -1,12 +1,22 @@
 function validaFormulario() {
-  let campos = ["a11", "a12", "a21", "a22", "b11", "b12", "b21", "b22"];
+  let campos = [
+    "matrizA11",
+    "matrizA12",
+    "matrizA21",
+    "matrizA22",
+    "matrizB11",
+    "matrizB12",
+    "matrizB21",
+    "matrizB22",
+  ];
   let valores = [];
 
   for (let i = 0; i < campos.length; i++) {
     let valor = document.getElementById(campos[i]).value;
     if (valor === "") {
+      let info = campos[i].slice(6);
       alert(
-        `Preencha o elemento (${campos[i][1]},${campos[i][2]}) da matriz ${campos[i][0].toUpperCase()}!`,
+        `Preencha o elemento (${info[1]},${info[2]}) da matriz ${info[0]}!`,
       );
       document.getElementById(campos[i]).focus();
       return false;
