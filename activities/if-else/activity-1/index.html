@@ -15,8 +15,26 @@
 
   <body>
     <header>
-      <a class="back-link" href="../index.html">← If...Else</a>
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        onclick="document.querySelector('.site-nav').classList.toggle('aberto')"
+      >
+        &#9776;
+      </button>
+
+      <nav class="site-nav">
+        <a href="../../../index.html">Home</a>
+        <a href="../../if-else/index.html" class="active">If...Else</a>
+        <a href="../../switch/index.html">Switch</a>
+        <a href="../../while/index.html">While</a>
+        <a href="../../do-while/index.html">Do...While</a>
+        <a href="../../for/index.html">For</a>
+        <a href="../../arrays/index.html">Arrays</a>
+        <a href="../../matrices/index.html">Matrices</a>
+      </nav>
     </header>
 
     <main id="conteudo">

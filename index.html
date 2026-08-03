@@ -10,6 +10,25 @@
   <body>
     <header>
       <h1><a href="index.html">Estudos de JavaScript SENAI</a></h1>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        onclick="document.querySelector('.site-nav').classList.toggle('aberto')"
+      >
+        &#9776;
+      </button>
+
+      <nav class="site-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="activities/if-else/index.html">If...Else</a>
+        <a href="activities/switch/index.html">Switch</a>
+        <a href="activities/while/index.html">While</a>
+        <a href="activities/do-while/index.html">Do...While</a>
+        <a href="activities/for/index.html">For</a>
+        <a href="activities/arrays/index.html">Arrays</a>
+        <a href="activities/matrices/index.html">Matrices</a>
+      </nav>
     </header>
 
     <main id="conteudo">
