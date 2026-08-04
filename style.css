@@ -163,8 +163,6 @@ footer p {
 
 .topic-card {
   display: block;
-  background-color: var(--white);
-  box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
   border-radius: 8px;
@@ -213,10 +211,15 @@ footer p {
 }
 
 .tech-card,
-.activity-content {
+.activity-content,
+.topic-card {
   background-color: var(--white);
-  border-radius: 10px;
   box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
+}
+
+.tech-card,
+.activity-content {
+  border-radius: 10px;
 }
 
 .tech-card {
