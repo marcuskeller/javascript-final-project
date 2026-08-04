@@ -176,7 +176,7 @@ footer p {
 .topic-card {
   display: block;
   border: 1px solid var(--bg);
-  border-top: 3px solid var(--accent);
+  border-top: 3px solid var(--level, var(--accent));
   border-radius: 8px;
   padding: 14px 16px;
   text-decoration: none;
@@ -203,16 +203,16 @@ footer p {
 }
 
 /* cor por nível de dificuldade da atividade */
-.topic-card.level-easy {
-  border-top-color: var(--level-easy);
+.level-easy {
+  --level: var(--level-easy);
 }
 
-.topic-card.level-medium {
-  border-top-color: var(--level-medium);
+.level-medium {
+  --level: var(--level-medium);
 }
 
-.topic-card.level-hard {
-  border-top-color: var(--level-hard);
+.level-hard {
+  --level: var(--level-hard);
 }
 
 /* ===== Cards de tecnologia (home) ===== */
@@ -278,19 +278,8 @@ footer p {
   padding: 3px 10px;
   border-radius: 999px;
   color: var(--white);
+  background-color: var(--level);
   vertical-align: middle;
-}
-
-.level-badge.level-easy {
-  background-color: var(--level-easy);
-}
-
-.level-badge.level-medium {
-  background-color: var(--level-medium);
-}
-
-.level-badge.level-hard {
-  background-color: var(--level-hard);
 }
 
 /* ===== Teoria ===== */
