@@ -1,3 +1,4 @@
+/* ===== Variáveis ===== */
 :root {
   --bg: #eef1f8;
   --header-bg: #16213e;
@@ -20,10 +21,12 @@
   --statement-bg: #f6f7fc;
 }
 
+/* ===== Reset ===== */
 * {
   box-sizing: border-box;
 }
 
+/* ===== Corpo da página ===== */
 body {
   margin: 0;
   font-family: var(--font), serif;
@@ -42,6 +45,7 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
+/* ===== Header / Navbar ===== */
 header {
   background-color: var(--header-bg);
   color: var(--white);
@@ -115,6 +119,7 @@ header h1 a:hover {
   border-bottom: 2px solid var(--white);
 }
 
+/* ===== Rodapé ===== */
 footer {
   background-color: var(--header-bg);
   color: rgba(var(--white-rgb), 0.7);
@@ -128,6 +133,7 @@ footer p {
   margin: 0;
 }
 
+/* ===== Layout do conteúdo ===== */
 #conteudo {
   max-width: 960px;
   margin: 0 auto;
@@ -143,6 +149,20 @@ footer p {
   margin-top: 32px;
 }
 
+/* ===== Cards (estilo compartilhado) ===== */
+.tech-card,
+.activity-content,
+.topic-card {
+  background-color: var(--white);
+  box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
+}
+
+.tech-card,
+.activity-content {
+  border-radius: 10px;
+}
+
+/* ===== Cards de tópicos (menu de estruturas) ===== */
 .topics-group h3 {
   margin: 22px 0 10px 0;
   font-size: 13px;
@@ -203,23 +223,12 @@ footer p {
   border-top-color: var(--level-hard);
 }
 
+/* ===== Cards de tecnologia (home) ===== */
 .tech-stack {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 20px;
-}
-
-.tech-card,
-.activity-content,
-.topic-card {
-  background-color: var(--white);
-  box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
-}
-
-.tech-card,
-.activity-content {
-  border-radius: 10px;
 }
 
 .tech-card {
@@ -263,6 +272,7 @@ footer p {
   text-decoration: underline;
 }
 
+/* ===== Conteúdo da atividade ===== */
 .activity-content {
   padding: 28px 30px;
   margin-bottom: 20px;
@@ -291,6 +301,7 @@ footer p {
   background-color: var(--level-hard);
 }
 
+/* ===== Teoria ===== */
 .theory h3 {
   font-size: 14px;
   text-transform: uppercase;
@@ -304,6 +315,7 @@ footer p {
   line-height: 1.7;
 }
 
+/* ===== Enunciado ===== */
 .statement {
   background-color: var(--statement-bg);
   border-left: 4px solid var(--accent);
@@ -322,6 +334,7 @@ footer p {
   border-top: 1px solid var(--border);
 }
 
+/* ===== Código-fonte ===== */
 .code-block {
   margin-bottom: 20px;
 }
@@ -361,6 +374,7 @@ footer p {
   display: none;
 }
 
+/* ===== Responsivo ===== */
 @media (max-width: 640px) {
   .tech-stack {
     grid-template-columns: 1fr;
