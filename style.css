@@ -163,7 +163,8 @@ footer p {
 
 .topic-card {
   display: block;
-  background-color: var(--bg);
+  background-color: var(--white);
+  box-shadow: 0 4px 16px rgba(var(--shadow-color), 0.08);
   border: 1px solid var(--border);
   border-top: 3px solid var(--accent);
   border-radius: 8px;
