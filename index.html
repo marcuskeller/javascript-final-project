@@ -5,29 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Repositório de Atividades - JavaScript</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="assets/dropdown.js"></script>
   </head>
 
   <body>
     <header>
       <h1><a href="index.html">Estudos de JavaScript SENAI</a></h1>
 
-      <button
-        type="button"
-        class="navbar-toggle"
-        onclick="document.querySelector('.navbar').classList.toggle('aberto')"
-      >
-        &#9776;
-      </button>
-
       <nav class="navbar">
         <a href="index.html" class="active">Home</a>
-        <a href="activities/if-else/index.html">If...Else</a>
-        <a href="activities/switch/index.html">Switch...Case</a>
-        <a href="activities/while/index.html">While</a>
-        <a href="activities/do-while/index.html">Do...While</a>
-        <a href="activities/for/index.html">For</a>
-        <a href="activities/arrays/index.html">Arrays</a>
-        <a href="activities/matrices/index.html">Matrices</a>
+
+        <div class="nav-dropdown">
+          <button
+            type="button"
+            class="nav-dropdown-toggle"
+            onclick="toggleDropdown(this)"
+          >
+            Condicionais
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="activities/if-else/index.html">If...Else</a>
+            <a href="activities/switch/index.html">Switch...Case</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <button
+            type="button"
+            class="nav-dropdown-toggle"
+            onclick="toggleDropdown(this)"
+          >
+            Repetição
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="activities/while/index.html">While</a>
+            <a href="activities/do-while/index.html">Do...While</a>
+            <a href="activities/for/index.html">For</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <button
+            type="button"
+            class="nav-dropdown-toggle"
+            onclick="toggleDropdown(this)"
+          >
+            Coleções
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="activities/arrays/index.html">Arrays</a>
+            <a href="activities/matrices/index.html">Matrices</a>
+          </div>
+        </div>
       </nav>
     </header>
 

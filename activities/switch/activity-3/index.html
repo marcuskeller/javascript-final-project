@@ -11,29 +11,58 @@
       href="../../../assets/formulario-base.css"
     />
     <script src="javascript.js"></script>
+    <script src="../../../assets/dropdown.js"></script>
   </head>
 
   <body>
     <header>
       <h1><a href="../../../index.html">Estudos de JavaScript SENAI</a></h1>
 
-      <button
-        type="button"
-        class="navbar-toggle"
-        onclick="document.querySelector('.navbar').classList.toggle('aberto')"
-      >
-        &#9776;
-      </button>
-
       <nav class="navbar">
         <a href="../../../index.html">Home</a>
-        <a href="../../if-else/index.html">If...Else</a>
-        <a href="../../switch/index.html" class="active">Switch...Case</a>
-        <a href="../../while/index.html">While</a>
-        <a href="../../do-while/index.html">Do...While</a>
-        <a href="../../for/index.html">For</a>
-        <a href="../../arrays/index.html">Arrays</a>
-        <a href="../../matrices/index.html">Matrices</a>
+
+        <div class="nav-dropdown">
+          <button
+            type="button"
+            class="nav-dropdown-toggle active"
+            onclick="toggleDropdown(this)"
+          >
+            Condicionais
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="../../if-else/index.html">If...Else</a>
+            <a href="../../switch/index.html" class="active">Switch...Case</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <button
+            type="button"
+            class="nav-dropdown-toggle"
+            onclick="toggleDropdown(this)"
+          >
+            Repetição
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="../../while/index.html">While</a>
+            <a href="../../do-while/index.html">Do...While</a>
+            <a href="../../for/index.html">For</a>
+          </div>
+        </div>
+
+        <div class="nav-dropdown">
+          <button
+            type="button"
+            class="nav-dropdown-toggle"
+            onclick="toggleDropdown(this)"
+          >
+            Coleções
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="../../arrays/index.html">Arrays</a>
+            <a href="../../matrices/index.html">Matrices</a>
+          </div>
+        </div>
       </nav>
     </header>
 
@@ -143,7 +172,7 @@
 
 .formulario h2 {
   text-align: center;
-  margin: 0 0 20px 0;
+  margin-bottom: 20px;
   font-size: 22px;
   color: var(--text);
 }
