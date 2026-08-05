@@ -173,6 +173,7 @@ footer {
   border-bottom: 2px solid var(--accent);
   padding-bottom: 6px;
   margin-top: 32px;
+  margin-bottom: 20px;
 }
 
 /* ===== Cards (estilo compartilhado) ===== */
